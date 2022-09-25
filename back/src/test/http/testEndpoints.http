@@ -1,0 +1,27 @@
+GET http://localhost:8080/boats/read/1
+
+###
+
+GET http://localhost:8080/boats/read/all
+
+###
+
+PUT http://localhost:8080/boats/update/ HTTP/1.1
+content-type: application/json
+
+{
+    "id": "1",
+    "name": "first update",
+    "description": "first updated boat" 
+}
+
+###
+
+POST http://localhost:8080/boats/create/ HTTP/1.1
+content-type: application/json
+
+{
+    "id": null,
+    "name": "added",
+    "description": "added boat" 
+}

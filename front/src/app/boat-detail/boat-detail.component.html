@@ -1,0 +1,15 @@
+<div *ngIf="boat">
+    <h2>Boat details </h2>
+    <div> id : {{boat.id}}</div>
+    <div> 
+        <label for="boat-name">Name : </label>
+        <input id="boat-name" [(ngModel)]="boat.name" placeholder="boat name">
+    </div>   
+    <br>
+    <div> 
+        <label for="boat-description">Description : </label>
+        <textarea id="boat-description" [(ngModel)]="boat.description" placeholder="boat description"></textarea>
+    </div>
+    <button type="button" (click)="goBack()">Back</button>
+    <button type="button" (click)="save()">save</button>
+</div>

@@ -1,0 +1,6 @@
+<h2>A few boats here</h2>
+<div class="boats-menu">
+  <a *ngFor="let boat of boats" routerLink="/detail/{{boat.id}}">
+    {{boat.name}}
+  </a>
+</div>

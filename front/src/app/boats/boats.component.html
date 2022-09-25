@@ -1,0 +1,24 @@
+<div>
+  <h3>Add Boat</h3>
+  <label for="new-boat-name">Boat name : </label>
+  <input id="new-boat-name" #boatName />
+
+  <label for="new-boat-desc"> Boat description : </label>
+  <textarea for="new-boat-desc"  #boatDesc></textarea>
+
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button type="button" class="add-button" (click)="add(boatName.value, boatDesc.value); boatName.value=''; boatDesc.value=''">
+    Add
+  </button>
+</div>  
+<h2>Available boats</h2>
+<ul class="boats">
+  <li *ngFor = "let boat of boats">
+    <a routerLink="/detail/{{boat.id}}">
+      <span class="badge">{{boat.id}}</span>
+      <span class="name">{{boat.name}}</span>
+    </a>
+    <button type="button" class="delete" title="delete boat"
+    (click)="delete(boat)">x</button>
+  </li>
+</ul>
