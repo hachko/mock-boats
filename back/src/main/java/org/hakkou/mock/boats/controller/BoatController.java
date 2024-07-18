@@ -3,8 +3,10 @@ package org.hakkou.mock.boats.controller;
 import java.util.List;
 
 import org.hakkou.mock.boats.dto.BoatDto;
+import org.hakkou.mock.boats.exceptions.BoatException;
 import org.hakkou.mock.boats.service.management.BoatManagement;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,13 +16,17 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
+
+import lombok.AllArgsConstructor;
 
 @RestController
 @RequestMapping("boats")
 @CrossOrigin
+@AllArgsConstructor
 public class BoatController {
-    @Autowired
-    private BoatManagement boatService;
+    
+    private final BoatManagement boatService;
 
     @GetMapping("/read/all")
     public List<BoatDto> getAllBoats() {
@@ -29,12 +35,20 @@ public class BoatController {
 
     @DeleteMapping("/delete/{id}")
     public void deleteBoat(@PathVariable Long id) {
-        boatService.deleteBoat(id);
+        try {
+            boatService.deleteBoat(id);
+        } catch (BoatException bex) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,bex.getMessage());
+        }
     }
 
     @GetMapping("/read/{id}")
     public BoatDto getById(@PathVariable Long id) {
-        return boatService.getBoat(id);
+        try {
+            return boatService.getBoat(id);
+        } catch (BoatException bex) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,bex.getMessage());
+        }
     }
 
     @PostMapping("/create")
@@ -47,13 +61,12 @@ public class BoatController {
     }
 
     @PutMapping("/update")
-    public BoatDto updateBoat(@RequestBody BoatDto boat){
-        if(!boatService.boatExists(boat.getId())) {
-            //TODO add exception handling
-            return null;
-        } else {
-            return boatService.saveBoat(boat);
-        }
+    public BoatDto updateBoat(@RequestBody BoatDto boat) {
+       try {
+        return boatService.updateBoat(boat);
+       } catch (BoatException bex) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,bex.getMessage());
+       }
     }
 
 }

@@ -1,41 +1,60 @@
 package org.hakkou.mock.boats.service;
 
 import org.hakkou.mock.boats.repo.BoatRepository;
-import org.hakkou.mock.boats.utils.MapUtils;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.hakkou.mock.boats.mappers.BoatMapper;
+
 import org.springframework.stereotype.Service;
+
+import lombok.AllArgsConstructor;
+
 import org.hakkou.mock.boats.dto.BoatDto;
 import org.hakkou.mock.boats.model.Boat;
 import org.hakkou.mock.boats.service.management.BoatManagement;
+import org.hakkou.mock.boats.exceptions.BoatException;
 import java.util.List;
+import java.util.Optional;
 
 @Service
-public class BoatService implements BoatManagement {
+@AllArgsConstructor
+public class BoatService implements BoatManagement {    
     
-    @Autowired
-    private MapUtils mapUtils;
+    private final BoatMapper boatMapper;
+    
+    private final BoatRepository boatRepo;
 
-    @Autowired
-    private BoatRepository boatRepo;
-
-    public BoatDto getBoat(Long id) {
-        return mapUtils.getMappedObject(boatRepo.findById(id).get(), BoatDto.class);
+    public BoatDto getBoat(Long id) throws BoatException {
+        return boatMapper.entityToDto(boatRepo.findById(id).orElseThrow(() -> {
+            return new BoatException("not found");
+        }));        
     }
 
     public List<BoatDto> getAllBoats() {
-        return mapUtils.getMappedList(boatRepo.findAll(), BoatDto.class);
+        return boatMapper.listEntitiesIntoDtos(boatRepo.findAll());
     }
 
     public BoatDto saveBoat(BoatDto boat) {
-        Boat entityToSave = mapUtils.getMappedObject(boat, Boat.class);
-        return mapUtils.getMappedObject(boatRepo.save(entityToSave), BoatDto.class);
+        Boat entityToSave = boatMapper.dtoToEntity(boat);
+        return boatMapper.entityToDto(boatRepo.save(entityToSave));
     }
 
-    public void deleteBoat(Long id) {
-        boatRepo.deleteById(id);
+    public void deleteBoat(Long id) throws BoatException {
+        Optional<Boat> boatToDelete = boatRepo.findById(id);
+        if(boatToDelete.isPresent()) {
+            boatRepo.deleteById(id);
+        } else {
+            throw new BoatException("not found, cannot delete");
+        }    
+    }
+    
+    public BoatDto updateBoat(BoatDto boatDto) throws BoatException {
+        if(boatExists(boatDto.getId())) {
+            return boatMapper.entityToDto(boatRepo.save(boatMapper.dtoToEntity(boatDto)));
+        } else {
+            throw new BoatException("not found, cannot update");
+        }
     }
 
-    public boolean boatExists(Long id) {
+    private boolean boatExists(Long id) {
         return boatRepo.existsById(id);
     }
 
