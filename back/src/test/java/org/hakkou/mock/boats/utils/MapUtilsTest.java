@@ -1,14 +1,14 @@
+package org.hakkou.mock.boats.utils;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
 import org.hakkou.mock.boats.dto.BoatDto;
 import org.hakkou.mock.boats.model.Boat;
-import org.hakkou.mock.boats.utils.MapUtils;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-public class MapperTest {
+public class MapUtilsTest {
     
     
     private static Mapper dozerMapper;
