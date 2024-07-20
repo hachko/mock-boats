@@ -32,8 +32,13 @@ public class BoatService implements BoatManagement {
         return boatMapper.listEntitiesIntoDtos(boatRepo.findAll());
     }
 
-    public BoatDto saveBoat(BoatDto boat) {
+    public BoatDto addBoat(BoatDto boat) throws BoatException{
         Boat entityToSave = boatMapper.dtoToEntity(boat);
+        if(entityToSave.getId() != null) {
+            throw new BoatException("Boat with id : "  
+            + entityToSave.getId() + 
+            " already exists, wont add");
+        }
         return boatMapper.entityToDto(boatRepo.save(entityToSave));
     }
 
@@ -47,15 +52,14 @@ public class BoatService implements BoatManagement {
     }
     
     public BoatDto updateBoat(BoatDto boatDto) throws BoatException {
-        if(boatExists(boatDto.getId())) {
+        if(boatDto.getId() == null) {
+            throw new BoatException("id not provided for boat to update");
+        }
+        Optional<Boat> boatToUpdate = boatRepo.findById(boatDto.getId());
+        if(boatToUpdate.isPresent()) {
             return boatMapper.entityToDto(boatRepo.save(boatMapper.dtoToEntity(boatDto)));
         } else {
             throw new BoatException("not found, cannot update");
         }
     }
-
-    private boolean boatExists(Long id) {
-        return boatRepo.existsById(id);
-    }
-
 }

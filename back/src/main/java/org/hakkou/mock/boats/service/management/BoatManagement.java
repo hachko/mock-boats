@@ -10,7 +10,7 @@ public interface BoatManagement {
 
     public BoatDto getBoat(Long id) throws BoatException;
 
-    public BoatDto saveBoat(BoatDto boat);
+    public BoatDto addBoat(BoatDto boat) throws BoatException;
 
     public void deleteBoat(Long id) throws BoatException;
 

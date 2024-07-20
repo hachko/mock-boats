@@ -38,7 +38,7 @@ public class BoatController {
         try {
             boatService.deleteBoat(id);
         } catch (BoatException bex) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND,bex.getMessage());
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, bex.getMessage());
         }
     }
 
@@ -47,16 +47,16 @@ public class BoatController {
         try {
             return boatService.getBoat(id);
         } catch (BoatException bex) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND,bex.getMessage());
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, bex.getMessage());
         }
     }
 
     @PostMapping("/create")
     public BoatDto addBoat(@RequestBody  BoatDto boat) {
-        if(boat.getId() != null) {            
-            return null;
-        } else {
-            return boatService.saveBoat(boat);
+        try {
+            return boatService.addBoat(boat);
+        } catch (BoatException bex) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, bex.getMessage());
         }
     }
 
@@ -65,7 +65,7 @@ public class BoatController {
        try {
         return boatService.updateBoat(boat);
        } catch (BoatException bex) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND,bex.getMessage());
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, bex.getMessage());
        }
     }
 
