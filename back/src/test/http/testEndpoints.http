@@ -1,4 +1,6 @@
+@auth = YWRtaW46YWRtaW4
 GET http://localhost:8080/boats/read/1
+Authorization: Basic {{auth}}
 
 ###
 
