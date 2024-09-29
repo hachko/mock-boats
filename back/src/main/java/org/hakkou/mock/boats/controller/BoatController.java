@@ -22,7 +22,6 @@ import lombok.AllArgsConstructor;
 
 @RestController
 @RequestMapping("boats")
-@CrossOrigin
 @AllArgsConstructor
 public class BoatController {
     

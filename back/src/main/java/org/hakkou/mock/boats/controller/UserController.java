@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @RestController
-@CrossOrigin
 @RequestMapping("users")
 @AllArgsConstructor
 public class UserController {

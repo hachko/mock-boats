@@ -16,12 +16,26 @@ export class BoatService {
 
   private boatsUrl = 'http://localhost:8080/boats';
 
+  // Utilisateur et mot de passe en dur
+  private username = 'user';
+  private password = 'user';
+
+  // Encoder les informations d'authentification en base64
+  private authHeader = 'Basic ' + btoa(this.username + ':' + this.password);
+
   private httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({ 
+      'Content-Type': 'application/json',
+      'Authorization': this.authHeader
+    })
   };
 
   getBoats(): Observable<Boat[]> {
-    return this.http.get<Boat[]>(this.boatsUrl + '/read/all').pipe(
+    console.log('HTTP Request:', {
+        url: this.boatsUrl + '/read/all',
+        headers: this.httpOptions.headers
+    });
+    return this.http.get<Boat[]>(this.boatsUrl + '/read/all', this.httpOptions).pipe(
       tap(_=> this.log('Boats fetched')),
       catchError(this.handleError<Boat[]>('getBoats', []))
     );
@@ -29,7 +43,7 @@ export class BoatService {
   } 
 
   getBoat(id: number): Observable<Boat> {
-    return this.http.get<Boat>(this.boatsUrl + '/read/' + id).pipe(
+    return this.http.get<Boat>(this.boatsUrl + '/read/' + id, this.httpOptions).pipe(
       tap(_=>this.log('fetched boat id : ${id}')),
       catchError(this.handleError<Boat>('getBoat(${id})'))
     )
