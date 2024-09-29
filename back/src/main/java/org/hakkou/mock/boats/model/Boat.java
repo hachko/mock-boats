@@ -32,6 +32,6 @@ public class Boat {
     String description;
 
     public boolean equals(Boat other) {
-        return other.getId() == this.getId();
+        return other != null && other.getId() == this.getId();
     }
 }

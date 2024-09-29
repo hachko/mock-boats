@@ -1,12 +1,16 @@
+@authAdmin = YWRtaW46YWRtaW4
+@authUser = dXNlcjp1c2Vy
 GET http://localhost:8080/boats/read/1
+Authorization: Basic {{authUser}}
 
 ###
 
 GET http://localhost:8080/boats/read/all
-
+Authorization: Basic {{authUser}}
 ###
 
 PUT http://localhost:8080/boats/update/ HTTP/1.1
+Authorization: Basic {{authUser}}
 content-type: application/json
 
 {
@@ -18,6 +22,7 @@ content-type: application/json
 ###
 
 POST http://localhost:8080/boats/create/ HTTP/1.1
+Authorization: Basic {{authUser}}
 content-type: application/json
 
 {
@@ -25,3 +30,23 @@ content-type: application/json
     "name": "added",
     "description": "added boat" 
 }
+
+###
+
+POST http://localhost:8080/users/create/ HTTP/1.1
+Authorization: Basic {{authAdmin}}
+Content-Type: application/json
+
+{
+    "id": null,
+    "username": "otherUser",
+    "password": "user",
+    "roles": [
+        {"name": "ROLE_USER"}
+    ]
+}
+
+###
+
+GET http://localhost:8080/users/read/1
+Authorization: Basic {{authAdmin}}
