@@ -14,11 +14,11 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  login(username: string, password: string): Observable<AuthResponse> {
+  login(username: string, password: string): Observable<AuthResponse> {    
     const headers = new HttpHeaders({
-      Authorization: 'Basic' + btoa(username + ':' + password)
+      Authorization: 'Basic ' + btoa(username + ':' + password)
     });
-    return this.http.get<AuthResponse>(`${this.baseUrl}/login`, { headers })
+    return this.http.get<AuthResponse>(`${this.baseUrl}/authenticate`, { headers })
     .pipe(
       tap(response => {
         if(response.isValid) {
@@ -34,7 +34,7 @@ export class AuthService {
   }
 
   getAuthHeader(): string {
-    return 'Basic' + this.base64Credentials;
+    return 'Basic:' + this.base64Credentials;
   }
   
 }
