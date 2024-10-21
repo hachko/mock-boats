@@ -3,12 +3,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { BoatsComponent } from './boats/boats.component';
 import { BoatDetailComponent } from './boat-detail/boat-detail.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginComponent } from './login/login.component';
+import { authGuard } from './auth.guard';
+
 
 const routes: Routes = [
-  { path: 'detail/:id', component: BoatDetailComponent },
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'boats', component: BoatsComponent },
-  { path: 'dashboard', component: DashboardComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'detail/:id', component: BoatDetailComponent, canActivate: [authGuard] },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'boats', component: BoatsComponent, canActivate: [authGuard] },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [authGuard] }
 ];
 
 @NgModule({

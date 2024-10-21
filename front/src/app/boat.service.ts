@@ -44,7 +44,7 @@ export class BoatService {
 
   getBoat(id: number): Observable<Boat> {
     return this.http.get<Boat>(this.boatsUrl + '/read/' + id, this.httpOptions).pipe(
-      tap(_=>this.log('fetched boat id : ${id}')),
+      tap(_=>this.log(`fetched boat id : ${id}`)),
       catchError(this.handleError<Boat>('getBoat(${id})'))
     )
   }
