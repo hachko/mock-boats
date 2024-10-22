@@ -1,4 +1,4 @@
-import { Role } from "./role-enum;model";
+import { Role } from "./role-enum.model";
 
 export interface AuthResponse {
     isValid: boolean;
