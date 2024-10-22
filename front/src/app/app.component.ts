@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Boats';
+  title = 'The Skipper\'s CRUD';
   constructor(private authService: AuthService, private router: Router) {}
   
   logout() {

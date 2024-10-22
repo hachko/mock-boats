@@ -25,14 +25,14 @@ background-color: black;
 
 /* Footer */
 .footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: #f8f9fa;
-  padding: 0.5rem 0; /* Moins d'espace par défaut */
-  text-align: center;
-  border-top: 1px solid #dee2e6;
-  transition: height 0.3s ease; /* Transition douce pour les changements de hauteur */
+position: fixed;
+bottom: 0;
+width: 100%;
+background-color: #f8f9fa;
+padding: 0.5rem 0; /* Moins d'espace par défaut */
+text-align: center;
+border-top: 1px solid #dee2e6;
+transition: height 0.3s ease; /* Transition douce pour les changements de hauteur */
 }
 
 header {
@@ -46,6 +46,7 @@ margin: 0;
 padding: 0;
 font-size: 1.5rem;
 color: #333;
+text-align: center;
 }
 
 .logoutButton {
