@@ -1,9 +1,14 @@
-<div class="messages-container" *ngIf="messageService.messages.length">
-        <h2>Services log messages</h2>
-        <button class="clear-button" (click)="messageService.clear()">Clear messages</button>
-        <ul>
-                <li *ngFor="let message of messageService.messages" class="message-item">
-                {{ message }}
-                </li>
-        </ul>
+<div class="messages-container">
+        <div *ngIf="isVisible()">
+                <h2>Services log messages</h2>        
+                <ul>
+                        <li *ngFor="let message of messageService.messages" class="message-item">
+                        {{ message }}
+                        </li>
+                </ul>
+                <button class="clear-button" (click)="messageService.clear()">Clear messages</button>
+        </div>
+        <button class="show-hide-button" (click)="setVisibility(!isVisible())">
+                {{isVisible()?'Hide logs':'Show logs'}}
+        </button>
 </div>

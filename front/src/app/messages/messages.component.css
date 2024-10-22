@@ -1,5 +1,5 @@
 .messages-container {
-  background-color: #f9f9f9;
+  background-color: #ffe174;
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 10px;
@@ -7,8 +7,13 @@
 }
 
 h2 {
+  color: navy;
   font-size: 1.5em;
   margin-bottom: 10px;
+}
+
+li {
+  color: navy;
 }
 
 .message-item {
@@ -30,6 +35,17 @@ h2 {
   cursor: pointer;
   float: right;
 }
+
+.show-hide-button {
+  background-color: #1a2c8d;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
 
 .clear-button:hover {
   background-color: #ff1a1a;

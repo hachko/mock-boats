@@ -25,13 +25,14 @@ background-color: black;
 
 /* Footer */
 .footer {
-position: fixed;
-bottom: 0;
-width: 100%;
-background-color: #f8f9fa;
-padding: 1rem 0;
-text-align: center;
-border-top: 1px solid #dee2e6;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #f8f9fa;
+  padding: 0.5rem 0; /* Moins d'espace par défaut */
+  text-align: center;
+  border-top: 1px solid #dee2e6;
+  transition: height 0.3s ease; /* Transition douce pour les changements de hauteur */
 }
 
 header {
