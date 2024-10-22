@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { AuthResponse } from './model/auth-response.model';
+import { MessageService } from './message.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class AuthService {
   private isLoggedIn = false;
   private base64Credentials = ''
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private messageService: MessageService) { }
 
   login(username: string, password: string): Observable<AuthResponse> {    
     const headers = new HttpHeaders({
@@ -35,6 +36,12 @@ export class AuthService {
 
   getAuthHeader(): string {
     return 'Basic:' + this.base64Credentials;
+  }
+
+  logout(): void {
+    this.messageService.clear();
+    this.isLoggedIn = false;
+    this.base64Credentials = '';
   }
   
 }
