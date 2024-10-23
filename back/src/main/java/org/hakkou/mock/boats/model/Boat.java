@@ -31,7 +31,7 @@ public class Boat {
     @Column(name = "description")
     String description;
 
-    @Column(name = "imageUrl")
+    @Column(name = "imageurl")
     String imageUrl;
 
     public boolean equals(Boat other) {

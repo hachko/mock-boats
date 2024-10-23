@@ -22,5 +22,5 @@ CREATE TABLE boats (
   id INT PRIMARY KEY auto_increment,
   name VARCHAR(20) NOT NULL,
   description VARCHAR(300), 
-  imageUrl VARCHAR(300)
+  imageurl VARCHAR(300)
 );
