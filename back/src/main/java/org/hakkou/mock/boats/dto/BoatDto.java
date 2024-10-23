@@ -14,5 +14,6 @@ import lombok.Setter;
 public class BoatDto {
     private Long id;
     private String name;
-    private String description;    
+    private String description;
+    private String imageUrl;
 }

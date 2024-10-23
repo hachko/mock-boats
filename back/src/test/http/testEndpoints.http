@@ -50,3 +50,7 @@ Content-Type: application/json
 
 GET http://localhost:8080/users/read/1
 Authorization: Basic {{authAdmin}}
+
+###
+GET http://localhost:8080/authenticate
+Authorization: Basic {{authUser}}

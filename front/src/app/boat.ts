@@ -1,5 +1,6 @@
 export interface Boat {
-    id: number;
+    id: number | null;
     name: string;
     description: string;
+    imageUrl: string;
 }

@@ -31,6 +31,9 @@ public class Boat {
     @Column(name = "description")
     String description;
 
+    @Column(name = "imageurl")
+    String imageUrl;
+
     public boolean equals(Boat other) {
         return other != null && other.getId() == this.getId();
     }

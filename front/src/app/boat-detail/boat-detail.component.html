@@ -1,15 +1,26 @@
-<div *ngIf="boat">
-    <h2>Boat details </h2>
-    <div> id : {{boat.id}}</div>
-    <div> 
-        <label for="boat-name">Name : </label>
-        <input id="boat-name" [(ngModel)]="boat.name" placeholder="boat name">
-    </div>   
-    <br>
-    <div> 
-        <label for="boat-description">Description : </label>
-        <textarea id="boat-description" [(ngModel)]="boat.description" placeholder="boat description"></textarea>
-    </div>
+<div *ngIf="boat" class="boat-detail-container">
+  <h2>Boat details</h2>
+  <div class="boat-detail">
+    <label for="boat-id">ID:</label>
+    <span id="boat-id">{{boat.id}}</span>
+  </div>
+  <div class="boat-detail">
+    <label for="boat-name">Name:</label>
+    <span id="boat-name">{{boat.name}}</span>
+  </div>
+  <div class="boat-detail">
+    <label for="boat-description">Description:</label>
+    <span id="boat-image-url">{{boat.description}}</span>
+  </div>
+  <div class="boat-detail">
+    <label for="boat-image-url">Image URL:</label>
+    <span id="boat-image-url">{{ boat.imageUrl }}</span>
+  </div>
+  <div class="boat-image">
+    <img [src]="boat.imageUrl" alt="Boat Image" *ngIf="boat.imageUrl" />
+  </div>
+  <div class="button-group">
     <button type="button" (click)="goBack()">Back</button>
-    <button type="button" (click)="save()">save</button>
+    <button type="button" (click)="modifyBoat()">Modify</button>
+  </div>
 </div>

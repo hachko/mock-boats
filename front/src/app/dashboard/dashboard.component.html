@@ -1,6 +1,7 @@
-<h2>A few boats here</h2>
+<h2>Today's boat selection</h2>
 <div class="boats-menu">
-  <a *ngFor="let boat of boats" routerLink="/detail/{{boat.id}}">
-    {{boat.name}}
+  <a *ngFor="let boat of boats" routerLink="/detail/{{boat.id}}" class="boat-tile">
+    <img [src]="boat.imageUrl" alt="{{boat.name}}" class="boat-image"/>
+    <div class="boat-name">{{boat.name}}</div>
   </a>
 </div>

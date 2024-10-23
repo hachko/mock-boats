@@ -1,19 +1,41 @@
-/* MessagesComponent's private CSS styles */
+.messages-container {
+  background-color: #ffe174;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  margin-top: 20px;
+}
+
 h2 {
-    color: #A80000;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: lighter;
-  }
-  
-  .clear {
-    color: #333;
-    background-color: #eee;
-    margin-bottom: 12px;
-    padding: 1rem;
-    border-radius: 4px;
-    font-size: 1rem;
-  }
-  .clear:hover {
-    color: white;
-    background-color: #42545C;
-  }
+  color: navy;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+li {
+  color: navy;
+}
+
+.message-item {
+  list-style: none;
+  padding: 5px;
+  border-bottom: 1px solid #ddd;
+}
+
+.message-item:last-child {
+  border-bottom: none;
+}
+
+.clear-button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  float: left;
+}
+
+.clear-button:hover {
+  background-color: #ff1a1a;
+}

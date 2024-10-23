@@ -1,7 +1,24 @@
-<h1>{{title}}</h1>
-<nav>
-    <a routerLink="/dashboard">Dashboard</a>
-    <a routerLink="/boats">All boats</a>
-  </nav>
-<router-outlet></router-outlet>
-<app-messages></app-messages>
+<div class="container">
+  <header class="d-flex justify-content-between align-items-center py-3 mb-4 border-bottom">
+    <h1>{{ title }}</h1>
+    <nav *ngIf="authenticated()" class="d-flex align-items-center">      
+      <a class="nav-link" routerLink="/dashboard">Dashboard</a>
+      <a class="nav-link" routerLink="/boats">All boats</a>
+      <button class="btn logoutButton" (click)="logout()">Logout</button>
+    </nav>
+  </header>
+
+  <main class="my-5">
+    <router-outlet></router-outlet>
+  </main>
+
+  <footer class="footer mt-auto py-3 bg-light" *ngIf="logMessagesVisible">
+    <div class="container">
+      <app-messages></app-messages>
+    </div>
+  </footer>
+
+  <button class="show-hide-button" (click)="toggleLogMessagesSection()">
+    {{ logMessagesVisible ? 'Hide logs' : 'Show logs' }}
+  </button>
+</div>

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Boats';
+  title = 'The Skipper\'s CRUD';
+  logMessagesVisible = false;
+  constructor(private authService: AuthService, private router: Router) {}
+  
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/']);
+  }
+
+  authenticated():boolean {
+    return this.authService.isAuthenticated();
+  }
+
+  toggleLogMessagesSection() {
+    this.logMessagesVisible = !this.logMessagesVisible;
+  }
 }

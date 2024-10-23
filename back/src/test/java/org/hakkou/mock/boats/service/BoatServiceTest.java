@@ -78,11 +78,13 @@ public class BoatServiceTest {
                 .id(null)
                 .name("added")
                 .description("added boat")
+                .imageUrl("http://added.image.com")
             .build());
             Assertions.assertEquals(3, mockedBoats.size());
             Assertions.assertEquals(3L, mockedBoats.get(2).getId());
             Assertions.assertEquals("added", mockedBoats.get(2).getName());
             Assertions.assertEquals("added boat", mockedBoats.get(2).getDescription());
+            Assertions.assertEquals("http://added.image.com", mockedBoats.get(2).getImageUrl());
         } catch (Exception ex) {
             Assertions.assertTrue(false);
         }
