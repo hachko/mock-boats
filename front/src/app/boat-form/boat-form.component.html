@@ -1,0 +1,27 @@
+<div *ngIf="boat" class="boat-form-container">
+    <h2>Boat details</h2>
+    <div class="boat-detail">
+      <label for="boat-id">ID:</label>
+      <span id="boat-id">{{boat.id}}</span>
+    </div>
+    <div class="boat-detail">
+      <label for="boat-name">Name:</label>
+      <input id="boat-name" [(ngModel)]="boat.name" placeholder="Boat name">
+    </div>
+    <div class="boat-detail">
+      <label for="boat-description">Description:</label>
+      <textarea id="boat-description" [(ngModel)]="boat.description" placeholder="Boat description"></textarea>
+    </div>
+    <div class="boat-detail">
+      <label for="boat-image-url">Image URL:</label>
+      <input id="boat-image-url" [(ngModel)]="boat.imageUrl" placeholder="Image URL">
+    </div>
+    <div class="boat-image">
+      <img [src]="boat.imageUrl" alt="Boat Image" *ngIf="boat.imageUrl" />
+    </div>
+    <div class="button-group">
+      <button type="button" (click)="goBack()">Back</button>
+      <button type="button" (click)="addBoat()">Save</button>
+    </div>
+  </div>
+  
