@@ -4,7 +4,6 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Boat } from './boat'
-import { BOATS } from './mock-boats';
 import { MessageService } from './message.service';
 import { MessageType } from './message-type-enum';
 

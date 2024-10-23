@@ -21,5 +21,6 @@ CREATE TABLE user_role (
 CREATE TABLE boats (
   id INT PRIMARY KEY auto_increment,
   name VARCHAR(20) NOT NULL,
-  description VARCHAR(64) 
+  description VARCHAR(300), 
+  imageUrl VARCHAR(300)
 );
