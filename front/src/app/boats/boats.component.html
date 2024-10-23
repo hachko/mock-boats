@@ -2,13 +2,13 @@
   <button type="button" class="new-boat-button" (click)="goToNewBoatForm()">New Boat</button>
 </div>
 
-<h2>Available boats</h2>
+<h2>Available boats (click one for details)</h2>
 <ul class="boats">
   <li *ngFor="let boat of boats">
     <a routerLink="/detail/{{boat.id}}">
       <span class="badge">{{boat.id}}</span>
       <span class="name">{{boat.name}}</span>
     </a>
-    <button type="button" class="delete" title="delete boat" (click)="delete(boat)">x</button>
+    <button type="button" class="delete" title="delete boat" (click)="delete(boat)">Delete</button>
   </li>
 </ul>

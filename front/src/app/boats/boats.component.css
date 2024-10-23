@@ -95,3 +95,29 @@
 .boats button.delete:hover {
   background-color: #c82333;
 }
+
+.new-boat-button {
+  background-color: #28a745; /* Vert vibrant */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.new-boat-button:hover {
+  background-color: #218838; 
+  transform: translateY(-2px); 
+}
+
+.new-boat-button:active {
+  background-color: #1e7e34; 
+  transform: translateY(1px); 
+}
+

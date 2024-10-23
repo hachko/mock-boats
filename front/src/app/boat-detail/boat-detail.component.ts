@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { Boat } from '../boat';
@@ -17,7 +17,8 @@ export class BoatDetailComponent implements OnInit {
   constructor(
     private location: Location, 
     private route: ActivatedRoute, 
-    private boatService: BoatService) { }
+    private boatService: BoatService,
+    private router: Router ) { }
   
   @Input() boat?: Boat;
 
@@ -33,9 +34,7 @@ export class BoatDetailComponent implements OnInit {
     this.location.back();
   }
 
-  save(): void {
-    if(this.boat) {
-      this.boatService.updateBoat(this.boat).subscribe(() => this.goBack());
-    }
+  modifyBoat(): void {
+    this.router.navigate(['boat/edit', this.boat?.id]);
   }
 }

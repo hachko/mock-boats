@@ -13,7 +13,8 @@ const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'detail/:id', component: BoatDetailComponent, canActivate: [authGuard] },  
   { path: 'boats', component: BoatsComponent, canActivate: [authGuard] },
-  { path: 'new-boat', component: BoatFormComponent, canActivate: [authGuard] },
+  { path: 'boat/add', component: BoatFormComponent, canActivate: [authGuard] },
+  { path: 'boat/edit/:id', component: BoatFormComponent, canActivate: [authGuard] },
   { path: 'dashboard', component: DashboardComponent, canActivate: [authGuard] }
 ];
 

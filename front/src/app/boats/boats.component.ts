@@ -33,7 +33,7 @@ export class BoatsComponent implements OnInit {
   }
 
   goToNewBoatForm(): void {
-    this.router.navigate(['new-boat']);
+    this.router.navigate(['/boat/add']);
   }
 
 }

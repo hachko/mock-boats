@@ -6,21 +6,21 @@
   </div>
   <div class="boat-detail">
     <label for="boat-name">Name:</label>
-    <input id="boat-name" [(ngModel)]="boat.name" placeholder="Boat name">
+    <span id="boat-name">{{boat.name}}</span>
   </div>
   <div class="boat-detail">
     <label for="boat-description">Description:</label>
-    <textarea id="boat-description" [(ngModel)]="boat.description" placeholder="Boat description"></textarea>
+    <span id="boat-image-url">{{boat.description}}</span>
   </div>
   <div class="boat-detail">
     <label for="boat-image-url">Image URL:</label>
-    <input id="boat-image-url" [(ngModel)]="boat.imageUrl" placeholder="Image URL">
+    <span id="boat-image-url">{{ boat.imageUrl }}</span>
   </div>
   <div class="boat-image">
     <img [src]="boat.imageUrl" alt="Boat Image" *ngIf="boat.imageUrl" />
   </div>
   <div class="button-group">
     <button type="button" (click)="goBack()">Back</button>
-    <button type="button" (click)="save()">Save</button>
+    <button type="button" (click)="modifyBoat()">Modify</button>
   </div>
 </div>
