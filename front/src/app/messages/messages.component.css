@@ -33,19 +33,8 @@ li {
   padding: 5px 10px;
   border-radius: 4px;
   cursor: pointer;
-  float: right;
+  float: left;
 }
-
-.show-hide-button {
-  background-color: #1a2c8d;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  float: right;
-}
-
 
 .clear-button:hover {
   background-color: #ff1a1a;

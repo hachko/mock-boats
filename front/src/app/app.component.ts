@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'The Skipper\'s CRUD';
+  logMessagesVisible = false;
   constructor(private authService: AuthService, private router: Router) {}
   
   logout() {
@@ -18,5 +19,9 @@ export class AppComponent {
 
   authenticated():boolean {
     return this.authService.isAuthenticated();
+  }
+
+  toggleLogMessagesSection() {
+    this.logMessagesVisible = !this.logMessagesVisible;
   }
 }
