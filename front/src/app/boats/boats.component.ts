@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Boat } from '../boat';
 import { BoatService } from '../boat.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { BoatService } from '../boat.service';
 })
 export class BoatsComponent implements OnInit {
 
-  constructor(private boatService: BoatService) { }
+  constructor(private boatService: BoatService, private router: Router) { }
 
   boats: Boat[] = [];
 
@@ -22,20 +23,17 @@ export class BoatsComponent implements OnInit {
     this.boatService.getBoats().subscribe(
       boats => this.boats = boats
     );
-  }
-
-  add(name: string, description: string): void {
-    name = name.trim();
-    if (!name) { return; }
-    this.boatService.addBoat({ name, description } as Boat)
-      .subscribe(boat => {
-        this.boats.push(boat);
-      });
-  }
+  }  
 
   delete(boat: Boat): void {
-    this.boats = this.boats.filter(b => b !== boat);
-    this.boatService.deleteBoat(boat.id).subscribe();
+    if(boat.id !== null) {
+      this.boats = this.boats.filter(b => b !== boat);
+      this.boatService.deleteBoat(boat.id).subscribe();
+    }    
+  }
+
+  goToNewBoatForm(): void {
+    this.router.navigate(['new-boat']);
   }
 
 }

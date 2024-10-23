@@ -12,11 +12,13 @@ import { AppRoutingModule } from './app-roputing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthInterceptor } from './auth.interceptor';
 import { CustomToastrModule } from './custom-toastr.module';
+import { BoatFormComponent } from './boat-form/boat-form.component';
 
 @NgModule({ declarations: [
         AppComponent,
         BoatsComponent,
         BoatDetailComponent,
+        BoatFormComponent,
         MessagesComponent,
         DashboardComponent
     ],

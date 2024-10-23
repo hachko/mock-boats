@@ -1,10 +1,5 @@
-<div class="boat-form-container">
-  <h3>Add Boat</h3>
-  <label for="new-boat-name">Boat name :</label>
-  <input id="new-boat-name" #boatName />
-  <label for="new-boat-desc">Boat description :</label>
-  <textarea id="new-boat-desc" #boatDesc></textarea>
-  <button type="button" class="add-button" (click)="add(boatName.value, boatDesc.value); boatName.value=''; boatDesc.value=''">Add</button>
+<div>
+  <button type="button" class="new-boat-button" (click)="goToNewBoatForm()">New Boat</button>
 </div>
 
 <h2>Available boats</h2>

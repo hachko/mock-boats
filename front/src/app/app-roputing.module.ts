@@ -5,6 +5,7 @@ import { BoatDetailComponent } from './boat-detail/boat-detail.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { authGuard } from './auth.guard';
+import { BoatFormComponent } from './boat-form/boat-form.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'detail/:id', component: BoatDetailComponent, canActivate: [authGuard] },  
   { path: 'boats', component: BoatsComponent, canActivate: [authGuard] },
+  { path: 'new-boat', component: BoatFormComponent, canActivate: [authGuard] },
   { path: 'dashboard', component: DashboardComponent, canActivate: [authGuard] }
 ];
 
