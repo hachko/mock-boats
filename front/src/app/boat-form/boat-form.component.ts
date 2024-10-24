@@ -21,18 +21,18 @@ export class BoatFormComponent {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    if(id) {
+    if (id) {
       this.getBoat(+id);
     }
   }
 
   getBoat(id: number): void {
-    this.boatService.getBoat(id).subscribe(boat => this.boat = boat);
+    this.boatService.getBoat(id).subscribe(boat => (this.boat = boat));
   }
 
-  save(): void {
-    if(this.boat.id === null) {
-      this.boatService.addBoat(this.boat).subscribe(boat => {      
+  save(): void {  
+    if (this.boat.id === null) {
+      this.boatService.addBoat(this.boat).subscribe(boat => {
         this.goBack();
       });
     } else {
@@ -43,6 +43,6 @@ export class BoatFormComponent {
   }
 
   goBack(): void {
-    this.location.back()
+    this.location.back();
   }
 }

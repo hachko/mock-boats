@@ -76,4 +76,8 @@
     color: #aaa;
     cursor: not-allowed;
   }
+
+  .alert {
+    color: red;
+  }
   
