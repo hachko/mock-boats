@@ -1,5 +1,6 @@
 package org.hakkou.mock.boats.service;
 
+import java.util.List;
 import java.util.Optional;
 import org.hakkou.mock.boats.dto.UserDto;
 import org.hakkou.mock.boats.exceptions.UserException;
@@ -23,6 +24,15 @@ public class UserService implements UserManagement {
     private final UserMapper userMapper;
     
     private final PasswordEncoder passwordEncoder;
+
+    @Override
+    public List<UserDto> getUsers() throws UserException {
+        try {
+            return userMapper.listEntitiesIntoDtos(userRepository.findAll());
+        } catch (Exception ex) {
+            throw new UserException("Error while fetching users in jpa or database");
+        }
+    }
 
     @Override
     public UserDto getUser(Long id) throws UserException {

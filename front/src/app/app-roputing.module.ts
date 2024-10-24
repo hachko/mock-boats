@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { authGuard } from './auth.guard';
 import { BoatFormComponent } from './boat-form/boat-form.component';
+import { UserAdminComponent } from './user-admin/user-admin.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'boats', component: BoatsComponent, canActivate: [authGuard] },
   { path: 'boat/add', component: BoatFormComponent, canActivate: [authGuard] },
   { path: 'boat/edit/:id', component: BoatFormComponent, canActivate: [authGuard] },
-  { path: 'dashboard', component: DashboardComponent, canActivate: [authGuard] }
+  { path: 'dashboard', component: DashboardComponent, canActivate: [authGuard] },
+  { path: 'user-admin', component: UserAdminComponent, canActivate: [authGuard] }
 ];
 
 @NgModule({

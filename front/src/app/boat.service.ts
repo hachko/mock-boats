@@ -57,7 +57,7 @@ export class BoatService {
     return this.http.delete<Boat>(this.boatsUrl + '/delete/' + id, this.httpOptions).pipe(
       tap(_=> this.log('Deleted boat id : ' + id, MessageType.SUCCESS)),
       catchError(this.handleError<Boat>('deleteBoat'))
-    )
+    );
   }
 
   private log(message: string, type: MessageType) {

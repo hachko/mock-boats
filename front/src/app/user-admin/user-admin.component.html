@@ -13,10 +13,10 @@
     </form>
 </div>
   
-<h2>Users</h2>
+<h2>Users with roles</h2>
 <ul class="users-list">
     <li *ngFor="let user of users">
-        <span>{{ user.username }} ({{ user.roles.join(', ') }})</span>
+        <span>{{ user.username }} ({{ getUserRolesInCommaSeparatedString(user) }})</span>
         <button (click)="deleteUser(user)" class="btn delete-btn">Delete</button>
     </li>
 </ul>

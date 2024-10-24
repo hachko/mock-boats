@@ -54,3 +54,7 @@ Authorization: Basic {{authAdmin}}
 ###
 GET http://localhost:8080/authenticate
 Authorization: Basic {{authUser}}
+
+###
+GET http://localhost:8080/users/read/all
+Authorization: Basic {{authAdmin}}

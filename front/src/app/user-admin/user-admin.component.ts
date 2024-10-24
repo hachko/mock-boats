@@ -38,4 +38,8 @@ export class UserAdminComponent {
       });
     }    
   }
+
+  getUserRolesInCommaSeparatedString(user: User): string {
+    return user.roles.map(role => role.name).join(', ');
+  }
 }
