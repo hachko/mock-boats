@@ -22,4 +22,4 @@ Fullstack mock project with boats (crud)
 >>default url is localhost:4200
 >>* You can authenticate and access the whole app in login screen using user:user
 >>* if you want to administrate users, use directly back-end endpoints using an http client like Postman
->>* An admin section in front end will be added (branch : [7-add-a-small-crud-for-user-management](https://github.com/hachko/mock-boats/tree/7-add-a-small-crud-for-user-management))
+>>* But it's simpler if you use the "admin users" menu directly in the angular app

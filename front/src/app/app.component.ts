@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
+import { RoleName } from './model/role-name-enum.model';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,7 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'The Skipper\'s CRUD';
   logMessagesVisible = false;
+  RoleName = RoleName;
   constructor(private authService: AuthService, private router: Router) {}
   
   logout() {
@@ -19,6 +21,10 @@ export class AppComponent {
 
   authenticated():boolean {
     return this.authService.isAuthenticated();
+  }
+
+  hasCurrentRole(roleName: RoleName): boolean {
+    return this.authService.hasRole(roleName);
   }
 
   toggleLogMessagesSection() {

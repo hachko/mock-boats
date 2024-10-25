@@ -78,4 +78,32 @@ background-color: #e67300;
   .show-hide-button:hover {
     background-color: #0f1a5a;
   }
+  .admin-menu {
+    text-align: center;
+    margin-top: 2rem;
+  }
   
+  .nav-link.admin-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.nav-link.admin-btn:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+.nav-link.admin-btn:active {
+    background-color: #1e7e34;
+    transform: translateY(1px);
+}

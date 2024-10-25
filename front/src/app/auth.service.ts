@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { AuthResponse } from './model/auth-response.model';
 import { MessageService } from './message.service';
+import { RoleName } from './model/role-name-enum.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,8 @@ export class AuthService {
 
   private baseUrl = 'http://localhost:8080';
   private isLoggedIn = false;
-  private base64Credentials = ''
+  private base64Credentials = '';
+  private roles: RoleName[] = [];
 
   constructor(private http: HttpClient, private messageService: MessageService) { }
 
@@ -25,6 +27,7 @@ export class AuthService {
         if(response.isValid) {
           this.isLoggedIn = true;
           this.base64Credentials = btoa(username + ':' + password);
+          this.roles = response.roles;
         }
       })
     );
@@ -36,6 +39,10 @@ export class AuthService {
 
   getAuthHeader(): string {
     return 'Basic:' + this.base64Credentials;
+  }
+
+  hasRole(role: RoleName): boolean {
+    return this.roles.includes(role);
   }
 
   logout(): void {

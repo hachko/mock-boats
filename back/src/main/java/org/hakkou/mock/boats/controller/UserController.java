@@ -1,5 +1,7 @@
 package org.hakkou.mock.boats.controller;
 
+import java.util.List;
+
 import org.hakkou.mock.boats.dto.UserDto;
 import org.hakkou.mock.boats.exceptions.UserException;
 import org.hakkou.mock.boats.service.management.UserManagement;
@@ -19,12 +21,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 
+
 @RestController
 @RequestMapping("users")
 @AllArgsConstructor
 public class UserController {
 
     private final UserManagement userService;
+
+    @GetMapping("/read/all")
+    public List<UserDto> getAllUsers() {
+        try {
+            return userService.getUsers();
+        } catch(UserException usEx) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, usEx.getMessage());
+        }
+    }
 
     @GetMapping("/read/{id}")    
     public UserDto getUser(@PathVariable Long id) {
