@@ -2,9 +2,12 @@
   <header class="d-flex justify-content-between align-items-center py-3 mb-4 border-bottom">
     <h1>{{ title }}</h1>
     <nav class="admin-menu" *ngIf="authenticated()" class="d-flex align-items-center">      
-      <a class="nav-link" routerLink="/dashboard">Dashboard</a>
-      <a class="nav-link" routerLink="/boats">All boats</a>
-      <a class="nav-link btn admin-btn" routerLink="/user-admin">Admin users</a>
+      <a class="nav-link" routerLink="/dashboard" 
+      *ngIf="hasCurrentRole(RoleName.USER)">Dashboard</a>
+      <a class="nav-link" routerLink="/boats" 
+      *ngIf="hasCurrentRole(RoleName.USER)">All boats</a>
+      <a class="nav-link btn admin-btn" routerLink="/user-admin" 
+      *ngIf="hasCurrentRole(RoleName.ADMIN) && hasCurrentRole(RoleName.USER)">Admin users</a>
       <button class="btn logoutButton" (click)="logout()">Logout</button>
     </nav>
   </header>
