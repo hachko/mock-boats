@@ -43,6 +43,18 @@ public class UserServiceTest {
     );
 
     @Test
+    public void repo_findAll_called_when_getUsers_executed() {
+        // WHEN 
+        try {
+            userService.getUsers();
+            
+        } catch(UserException ex) {
+            // nothing to test here
+        }
+        verify(userRepository).findAll();
+    }
+
+    @Test
     public void exception_handled_when_getUser_called() {
         // Given
         when(userRepository.findById(anyLong())).thenAnswer(inv -> getFromMock(inv.getArgument(0)));
