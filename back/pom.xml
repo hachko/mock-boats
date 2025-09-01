@@ -113,11 +113,11 @@
 			</plugin>
 		</plugins>		
 	</build>
-	<deliveryManagement>
+	<distributionManagement>
 		<repository>
 			<id>github</id>
 			<name>GitHub Packages</name>
 			<url>https://maven.pkg.github.com/${project.groupId}/${project.artifactId}</url>
 		</repository>		
-	</deliveryManagement>
+	</distributionManagement>
 </project>
