@@ -111,8 +111,13 @@
 					</annotationProcessorPaths>
 				</configuration>
 			</plugin>
-
-		</plugins>
+		</plugins>		
 	</build>
-
+	<deliveryManagement>
+		<repository>
+			<id>github</id>
+			<name>GitHub Packages</name>
+			<url>https://maven.pkg.github.com/${project.groupId}/${project.artifactId}</url>
+		</repository>		
+	</deliveryManagement>
 </project>
