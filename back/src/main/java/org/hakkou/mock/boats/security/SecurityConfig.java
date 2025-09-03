@@ -19,9 +19,9 @@ public class SecurityConfig {
         http.csrf().disable().cors().configurationSource(corsConfigurationSource()).and()
         .authorizeHttpRequests((authorise) -> {
             authorise
-            .antMatchers("/h2-ui/**").permitAll()
-            .antMatchers("/users/**").hasRole("ADMIN")
-            .antMatchers("/boats/**").hasRole("USER") 
+            .requestMatchers("/h2-ui/**").permitAll()
+            .requestMatchers("/users/**").hasRole("ADMIN")
+            .requestMatchers("/boats/**").hasRole("USER") 
             .anyRequest().authenticated();
         }).httpBasic(Customizer.withDefaults()).headers().frameOptions().disable();
         return http.build();

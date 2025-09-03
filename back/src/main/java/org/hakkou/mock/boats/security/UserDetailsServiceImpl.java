@@ -4,7 +4,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import javax.transaction.Transactional;
+import jakarta.transaction.Transactional;
 
 import org.hakkou.mock.boats.model.User;
 import org.hakkou.mock.boats.repo.UserRepository;

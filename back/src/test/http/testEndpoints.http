@@ -9,7 +9,7 @@ GET http://localhost:8080/boats/read/all
 Authorization: Basic {{authUser}}
 ###
 
-PUT http://localhost:8080/boats/update/ HTTP/1.1
+PUT http://localhost:8080/boats/update HTTP/1.1
 Authorization: Basic {{authUser}}
 content-type: application/json
 
@@ -21,7 +21,7 @@ content-type: application/json
 
 ###
 
-POST http://localhost:8080/boats/create/ HTTP/1.1
+POST http://localhost:8080/boats/create HTTP/1.1
 Authorization: Basic {{authUser}}
 content-type: application/json
 
